@@ -127,13 +127,13 @@ b = axes[1]
 b.text(0.5, 0.95, "Works instead: Z at the front", ha="center", fontsize=11,
        fontweight="bold", color=INK)
 box(b, 0.15, 0.52, 0.26, 0.20, "Vehicle\naccess (Z)", fs=9)
-box(b, 0.50, 0.52, 0.30, 0.20, "Physical\naccessibility (X)", fs=9)
+box(b, 0.50, 0.52, 0.345, 0.20, "Physical\naccessibility (X)", fs=8.6)
 box(b, 0.85, 0.52, 0.24, 0.20, "Spending\n(Y)", fs=9)
-arrow(b, (0.28, 0.52), (0.35, 0.52))
-arrow(b, (0.65, 0.52), (0.73, 0.52))
-b.text(0.315, 0.63, "–", fontsize=13, color=INK, ha="center")
-b.text(0.69, 0.63, "–", fontsize=13, color=INK, ha="center")
-b.text(0.5, 0.21, "The independent variable becomes the mediator.\nHolds for the concept, not for distance in miles.",
+arrow(b, (0.28, 0.52), (0.325, 0.52))
+arrow(b, (0.675, 0.52), (0.73, 0.52))
+b.text(0.302, 0.67, "+", fontsize=13, color=INK, ha="center")
+b.text(0.702, 0.67, "+", fontsize=13, color=INK, ha="center")
+b.text(0.5, 0.21, "The independent concept becomes the mediator. Both signs are\npositive: a car raises accessibility, accessibility raises spending.",
        ha="center", fontsize=8.6, color=GRAY, style="italic")
 fig.tight_layout()
 fig.savefig(OUT + "Figure3_mediation.png", dpi=300, bbox_inches="tight")
