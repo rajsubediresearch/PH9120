@@ -4,11 +4,27 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
+# Font: Times New Roman first so the figures match the Word document.
+# Liberation Serif is metric-compatible with it (same widths), DejaVu Serif is
+# matplotlib's bundled fallback and is WIDER -- if it gets used, labels crowd
+# and the figures look noticeably worse. The print below says which one won.
+SERIF_PREFERENCE = ["Times New Roman", "Liberation Serif", "Tinos", "DejaVu Serif"]
 plt.rcParams.update({
     "font.family": "serif",
-    "font.serif": ["Liberation Serif", "DejaVu Serif"],
+    "font.serif": SERIF_PREFERENCE,
     "font.size": 10,
 })
+
+import matplotlib.font_manager as _fm
+_installed = {f.name for f in _fm.fontManager.ttflist}
+_resolved = next((f for f in SERIF_PREFERENCE if f in _installed), None)
+if _resolved in (None, "DejaVu Serif"):
+    print("WARNING: falling back to DejaVu Serif. Figures will look wider and more"
+          " crowded than the shipped PNGs.\n"
+          "         Install Times New Roman or Liberation Serif, or just use the"
+          " PNGs already in this folder.")
+else:
+    print("Using font:", _resolved)
 OUT = ""
 INK, GRAY, LIGHT = "#1a1a1a", "#6e6e6e", "#b5b5b5"
 BLUE, ORANGE = "#4472C4", "#ED7D31"
