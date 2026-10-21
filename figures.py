@@ -79,29 +79,32 @@ fig.savefig(OUT + "Figure1_operational_linkage.png", dpi=300)
 plt.close(fig)
 
 # ========================================================= FIGURE 2  spurious
-fig, ax = plt.subplots(figsize=(5.0, 2.66))
+fig, ax = plt.subplots(figsize=(5.4, 3.25))
 ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
-box(ax, 0.50, 0.85, 0.36, 0.18, "Vehicle access  (Z)")
-box(ax, 0.17, 0.33, 0.30, 0.20, "Network distance\nto nearest outlet\n(X)")
-box(ax, 0.83, 0.33, 0.30, 0.20, "Alcohol spending\nshare of income\n(Y)")
+box(ax, 0.50, 0.93, 0.34, 0.115, "Household income", fs=8.6, ec=GRAY, lw=1.1, ls=(0, (4, 3)))
+box(ax, 0.50, 0.645, 0.30, 0.135, "Vehicle access  (Z)", fs=9)
+box(ax, 0.155, 0.26, 0.29, 0.185, "Network distance\nto nearest outlet\n(X)", fs=8.6)
+box(ax, 0.845, 0.26, 0.29, 0.185, "Alcohol spending\nshare of income\n(Y)", fs=8.6)
 
-arrow(ax, (0.40, 0.76), (0.21, 0.44))
-ax.text(0.26, 0.62, "+", fontsize=14, color=INK, ha="center")
-ax.text(0.015, 0.60, "car owners can live in\nlower-density areas,\nso outlets are farther",
-        fontsize=8.2, color=GRAY, ha="left", va="center")
+arrow(ax, (0.50, 0.872), (0.50, 0.715), color=GRAY, lw=1.2, ls=(0, (4, 3)), ms=11)
+ax.text(0.535, 0.795, "+", fontsize=12, color=GRAY, ha="left")
 
-arrow(ax, (0.60, 0.76), (0.79, 0.44))
-ax.text(0.74, 0.62, "–", fontsize=14, color=INK, ha="center")
-ax.text(0.985, 0.60, "a car reaches bulk and\ndiscount retail, lowering\nprice paid per drink",
-        fontsize=8.2, color=GRAY, ha="right", va="center")
+arrow(ax, (0.385, 0.59), (0.215, 0.355), lw=1.5)
+ax.text(0.255, 0.50, "+", fontsize=12, color=INK, ha="center")
 
-ax.add_patch(FancyArrowPatch((0.33, 0.33), (0.67, 0.33), arrowstyle="-", lw=1.6,
+arrow(ax, (0.615, 0.59), (0.785, 0.355), lw=1.5)
+ax.text(0.745, 0.50, "\u2013", fontsize=12, color=INK, ha="center")
+
+ax.add_patch(FancyArrowPatch((0.67, 0.93), (0.90, 0.355), arrowstyle="-|>",
+             mutation_scale=11, color=GRAY, lw=1.2, linestyle=(0, (4, 3)),
+             shrinkA=3, shrinkB=3, connectionstyle="arc3,rad=-0.45", zorder=2))
+
+ax.add_patch(FancyArrowPatch((0.30, 0.26), (0.70, 0.26), arrowstyle="-", lw=1.5,
              color=LIGHT, linestyle=(0, (5, 3)), shrinkA=3, shrinkB=3, zorder=2))
-ax.text(0.50, 0.265, "observed negative association,\npossibly artifact", fontsize=8.4,
+ax.text(0.50, 0.195, "observed negative association,\npossibly artifact", fontsize=8,
         color=GRAY, ha="center", va="top", style="italic")
-ax.text(0.50, 0.055, "Z produces X and Y independently, reproducing the very sign the theory predicts.",
-        ha="center", fontsize=8.6, color=GRAY)
-fig.tight_layout()
+ax.text(0.50, 0.075, "+  car owners can live farther out        \u2013  bulk buying lowers price per drink\n\u2013  higher income means a bigger denominator and a smaller budget share (Engel's law)",
+        ha="center", va="top", fontsize=7.9, color=GRAY)
 fig.savefig(OUT + "Figure2_spurious.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
@@ -126,14 +129,14 @@ a.text(0.5, 0.21, "How far the store is does not cause a\nhousehold to own a car
 b = axes[1]
 b.text(0.5, 0.95, "Works instead: Z at the front", ha="center", fontsize=11,
        fontweight="bold", color=INK)
-box(b, 0.15, 0.52, 0.26, 0.20, "Vehicle\naccess (Z)", fs=9)
-box(b, 0.50, 0.52, 0.345, 0.20, "Physical\naccessibility (X)", fs=8.6)
-box(b, 0.85, 0.52, 0.24, 0.20, "Spending\n(Y)", fs=9)
-arrow(b, (0.28, 0.52), (0.325, 0.52))
-arrow(b, (0.675, 0.52), (0.73, 0.52))
-b.text(0.302, 0.67, "+", fontsize=13, color=INK, ha="center")
-b.text(0.702, 0.67, "+", fontsize=13, color=INK, ha="center")
-b.text(0.5, 0.21, "The independent concept becomes the mediator. Both signs are\npositive: a car raises accessibility, accessibility raises spending.",
+box(b, 0.12, 0.52, 0.20, 0.20, "Vehicle\naccess (Z)", fs=8.5)
+box(b, 0.50, 0.52, 0.44, 0.20, "Physical accessibility\n(the concept)", fs=8.5)
+box(b, 0.88, 0.52, 0.20, 0.20, "Spending\n(Y)", fs=8.5)
+arrow(b, (0.22, 0.52), (0.28, 0.52))
+arrow(b, (0.72, 0.52), (0.78, 0.52))
+b.text(0.25, 0.67, "+", fontsize=13, color=INK, ha="center")
+b.text(0.75, 0.67, "+", fontsize=13, color=INK, ha="center")
+b.text(0.5, 0.19, "The independent CONCEPT, not the distance measure, becomes the\nmediator. A car raises accessibility; accessibility raises spending.",
        ha="center", fontsize=8.6, color=GRAY, style="italic")
 fig.tight_layout()
 fig.savefig(OUT + "Figure3_mediation.png", dpi=300, bbox_inches="tight")
@@ -208,6 +211,10 @@ arrow(ax, (cx["X"], BOT), (cx["Y"], BOT), color=GRAY, lw=1.2,
 ax.text(0.50, 0.335, "–   residual direct path (planned, stock-up purchases)",
         ha="center", fontsize=8.6, color=GRAY, style="italic",
         bbox=dict(fc="white", ec="none", pad=2.5))
+box(ax, 0.79, 0.955, 0.31, 0.09, "Household income (control)", fs=7.8, ec=GRAY, lw=1.1, ls=(0, (4, 3)))
+ax.add_patch(FancyArrowPatch((0.84, 0.910), (0.84, 0.805), arrowstyle="-|>",
+             mutation_scale=11, color=GRAY, lw=1.1, linestyle=(0, (4, 3)),
+             shrinkA=2, shrinkB=2, zorder=2))
 ax.annotate("", xy=(1.0, 0.13), xytext=(0.0, 0.13),
             arrowprops=dict(arrowstyle="->", color=LIGHT, lw=1.2))
 for k_, lab in [("X", "at residential choice"), ("M", "daily / weekly"), ("Y", "past 30 days")]:
